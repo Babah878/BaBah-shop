@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ba Bah🍏 🐰 - บริการงานปั๊มฟอล</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        kanit: ['Kanit', 'sans-serif'],
+                    },
+                    colors: {
+                        apple: {
+                            50: '#f4fbf4',
+                            100: '#e8f5e9',
+                            200: '#c8e6c9',
+                            300: '#aed581',
+                            400: '#8bc34a',
+                            500: '#7cb342',
+                            600: '#689f38',
+                            700: '#558b2f',
+                            800: '#33691e',
+                            900: '#1b5e20',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Kanit', sans-serif;
+            background-color: #f4fbf4;
+            background-image: 
+                radial-gradient(#c8e6c9 1.5px, transparent 1.5px), 
+                radial-gradient(#c8e6c9 1.5px, #f4fbf4 1.5px);
+            background-size: 24px 24px;
+            background-position: 0 0, 12px 12px;
+        }
+        .modal-animate {
+            animation: popUp 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        @keyframes popUp {
+            from { transform: scale(0.85); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex justify-center items-center p-3 md:p-6 text-slate-800">
+
+    <div class="w-full max-w-md bg-white/90 backdrop-blur-md rounded-3xl p-5 md:p-6 shadow-xl border border-apple-200 relative overflow-hidden">
+        
+        <div class="relative bg-gradient-to-br from-apple-400 to-apple-600 text-white text-center p-6 rounded-2xl shadow-md mb-5 overflow-hidden">
+            <div class="absolute -top-3 -left-3 text-5xl opacity-20 transform -rotate-12 select-none">🍏</div>
+            <div class="absolute -bottom-3 -right-3 text-5xl opacity-20 transform rotate-12 select-none">🐰</div>
+            
+            <h1 class="text-2xl md:text-3xl font-bold flex items-center justify-center gap-2 drop-shadow-sm">
+                🍏 Ba Bah 🐰
+            </h1>
+            <p class="text-xs md:text-sm font-light mt-1.5 bg-white/20 inline-block px-3 py-1 rounded-full border border-white/20">
+                งานปั๊มฟอล • เรทราคาน่ารัก • บริการไว
+            </p>
+        </div>
+
+        <div class="relative mb-5">
+            <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-apple-500">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                </svg>
+            </div>
+            <input type="text" id="searchInput" onkeyup="filterServices()" 
+                   placeholder="ค้นหาจำนวนฟอล หรือ ราคา..." 
+                   class="w-full pl-10 pr-4 py-2.5 bg-white border-2 border-apple-200 rounded-2xl text-sm focus:outline-none focus:border-apple-500 transition-all shadow-sm">
+        </div>
+
+        <div class="service-category mb-4">
+            <h2 class="text-sm font-semibold text-apple-800 mb-2.5 flex items-center gap-2 border-l-4 border-apple-500 pl-2">
+                📸 ปั๊มฟอล Instagram (IG)
+            </h2>
+            <div class="space-y-2">
+                <div class="service-item flex justify-between items-center bg-apple-50/60 hover:bg-apple-100 border border-apple-100 p-3 rounded-xl transition cursor-pointer active:scale-[0.98]" onclick="openModal('ปั๊มฟอล IG 10 ฟอล', '5')">
+                    <span class="text-sm font-medium">10 ฟอล</span>
+                    <span class="text-xs font-bold text-apple-700 bg-apple-200/60 px-2.5 py-1 rounded-lg">5 ฿</span>
+                </div>
+                <div class="service-item flex justify-between items-center bg-apple-50/60 hover:bg-apple-100 border border-apple-100 p-3 rounded-xl transition cursor-pointer active:scale-[0.98]" onclick="openModal('ปั๊มฟอล IG 50 ฟอล', '20')">
+                    <span class="text-sm font-medium">50 ฟอล</span>
+                    <span class="text-xs font-bold text-apple-700 bg-apple-200/60 px-2.5 py-1 rounded-lg">20 ฿</span>
+                </div>
+                <div class="service-item flex justify-between items-center bg-apple-50/60 hover:bg-apple-100 border border-apple-100 p-3 rounded-xl transition cursor-pointer active:scale-[0.98]" onclick="openModal('ปั๊มฟอล IG 100 ฟอล', '35')">
+                    <span class="text-sm font-medium">100 ฟอล</span>
+                    <span class="text-xs font-bold text-apple-700 bg-apple-200/60 px-2.5 py-1 rounded-lg">35 ฿</span>
+                </div>
+                <div class="service-item flex justify-between items-center bg-apple-50/60 hover:bg-apple-100 border border-apple-100 p-3 rounded-xl transition cursor-pointer active:scale-[0.98]" onclick="openModal('ปั๊มฟอล IG 500 ฟอล', '120')">
+                    <span class="text-sm font-medium">500 ฟอล</span>
+                    <span class="text-xs font-bold text-apple-700 bg-apple-200/60 px-2.5 py-1 rounded-lg">120 ฿</span>
+                </div>
+                <div class="service-item flex justify-between items-center bg-apple-50/60 hover:bg-apple-100 border border-apple-100 p-3 rounded-xl transition cursor-pointer active:scale-[0.98]" onclick="openModal('ปั๊มฟอล IG 1,000 ฟอล', '200')">
+                    <span class="text-sm font-medium">1,000 ฟอล</span>
+                    <span class="text-xs font-bold text-apple-700 bg-apple-200/60 px-2.5 py-1 rounded-lg">200 ฿</span>
+                </div>
+                <div class="service-item flex justify-between items-center bg-apple-50/60 hover:bg-apple-100 border border-apple-100 p-3 rounded-xl transition cursor-pointer active:scale-[0.98]" onclick="openModal('ปั๊มฟอล IG 5,000 ฟอล', '850')">
+                    <span class="text-sm font-medium">5,000 ฟอล</span>
+                    <span class="text-xs font-bold text-apple-700 bg-apple-200/60 px-2.5 py-1 rounded-lg">850 ฿</span>
+                </div>
+                <div class="service-item flex justify-between items-center bg-apple-50/60 hover:bg-apple-100 border border-apple-100 p-3 rounded-xl transition cursor-pointer active:scale-[0.98]" onclick="openModal('ปั๊มฟอล IG 10,000 ฟอล', '1,500')">
+                    <span class="text-sm font-medium">10,000 ฟอล</span>
+                    <span class="text-xs font-bold text-apple-700 bg-apple-200/60 px-2.5 py-1 rounded-lg">1,500 ฿</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="service-category mb-4">
+            <h2 class="text-sm font-semibold text-apple-800 mb-2.5 flex items-center gap-2 border-l-4 border-apple-500 pl-2">
+                📘 ปั๊มฟอล Facebook
+            </h2>
+            <div class="space-y-2">
+                <div class="service-item flex justify-between items-center bg-apple-50/60 hover:bg-apple-100 border border-apple-100 p-3 rounded-xl transition cursor-pointer active:scale-[0.98]" onclick="openModal('ปั๊มฟอล FB 10 ฟอล', '5')">
+                    <span class="text-sm font-medium">10 ฟอล</span>
+                    <span class="text-xs font-bold text-apple-700 bg-apple-200/60 px-2.5 py-1 rounded-lg">5 ฿</span>
+                </div>
+                <div class="service-item flex justify-between items-center bg-apple-50/60 hover:bg-apple-100 border border-apple-100 p-3 rounded-xl transition cursor-pointer active:scale-[0.98]" onclick="openModal('ปั๊มฟอล FB 50 ฟอล', '20')">
+                    <span class="text-sm font-medium">50 ฟอล</span>
+                    <span class="text-xs font-bold text-apple-700 bg-apple-200/60 px-2.5 py-1 rounded-lg">20 ฿</span>
+                </div>
+                <div class="service-item flex justify-between items-center bg-apple-50/60 hover:bg-apple-100 border border-apple-100 p-3 rounded-xl transition cursor-pointer active:scale-[0.98]" onclick="openModal('ปั๊มฟอล FB 100 ฟอล', '35')">
+                    <span class="text-sm font-medium">100 ฟอล</span>
+                    <span class="text-xs font-bold text-apple-700 bg-apple-200/60 px-2.5 py-1 rounded-lg">35 ฿</span>
+                </div>
+                <div class="service-item flex justify-between items-center bg-apple-50/60 hover:bg-apple-100 border border-apple-100 p-3 rounded-xl transition cursor-pointer active:scale-[0.98]" onclick="openModal('ปั๊มฟอล FB 500 ฟอล', '130')">
+                    <span class="text-sm font-medium">500 ฟอล</span>
+                    <span class="text-xs font-bold text-apple-700 bg-apple-200/60 px-2.5 py-1 rounded-lg">130 ฿</span>
+                </div>
+                <div class="service-item flex justify-between items-center bg-apple-50/60 hover:bg-apple-100 border border-apple-100 p-3 rounded-xl transition cursor-pointer active:scale-[0.98]" onclick="openModal('ปั๊มฟอล FB 1,000 ฟอล', '220')">
+                    <span class="text-sm font-medium">1,000 ฟอล</span>
+                    <span class="text-xs font-bold text-apple-700 bg-apple-200/60 px-2.5 py-1 rounded-lg">220 ฿</span>
+                </div>
+                <div class="service-item flex justify-between items-center bg-apple-50/60 hover:bg-apple-100 border border-apple-100 p-3 rounded-xl transition cursor-pointer active:scale-[0.98]" onclick="openModal('ปั๊มฟอล FB 5,000 ฟอล', '900')">
+                    <span class="text-sm font-medium">5,000 ฟอล</span>
+                    <span class="text-xs font-bold text-apple-700 bg-apple-200/60 px-2.5 py-1 rounded-lg">900 ฿</span>
+                </div>
+                <div class="service-item flex justify-between items-center bg-apple-50/60 hover:bg-apple-100 border border-apple-100 p-3 rounded-xl transition cursor-pointer active:scale-[0.98]" onclick="openModal('ปั๊มฟอล FB 10,000 ฟอล', '1,600')">
+                    <span class="text-sm font-medium">10,000 ฟอล</span>
+                    <span class="text-xs font-bold text-apple-700 bg-apple-200/60 px-2.5 py-1 rounded-lg">1,600 ฿</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="service-category mb-4">
+            <h2 class="text-sm font-semibold text-apple-800 mb-2.5 flex items-center gap-2 border-l-4 border-apple-500 pl-2">
+                🎵 ปั๊มฟอล TikTok
+            </h2>
+            <div class="space-y-2">
+                <div class="service-item flex justify-between items-center bg-apple-50/60 hover:bg-apple-100 border border-apple-100 p-3 rounded-xl transition cursor-pointer active:scale-[0.98]" onclick="openModal('ปั๊มฟอล TikTok 10 ฟอล', '5')">
+                    <span class="text-sm font-medium">10 ฟอล</span>
+                    <span class="text-xs font-bold text-apple-700 bg-apple-200/60 px-2.5 py-1 rounded-lg">5 ฿</span>
+                </div>
+                <div class="service-item flex justify-between items-center bg-apple-50/60 hover:bg-apple-100 border border-apple-100 p-3 rounded-xl transition cursor-pointer active:scale-[0.98]" onclick="openModal('ปั๊มฟอล TikTok 50 ฟอล', '20')">
+                    <span class="text-sm font-medium">50 ฟอล</span>
+                    <span class="text-xs font-bold text-apple-700 bg-apple-200/60 px-2.5 py-1 rounded-lg">20 ฿</span>
+                </div>
+                <div class="service-item flex justify-between items-center bg-apple-50/60 hover:bg-apple-100 border border-apple-100 p-3 rounded-xl transition cursor-pointer active:scale-[0.98]" onclick="openModal('ปั๊มฟอล TikTok 100 ฟอล', '35')">
+                    <span class="text-sm font-medium">100 ฟอล</span>
+                    <span class="text-xs font-bold text-apple-700 bg-apple-200/60 px-2.5 py-1 rounded-lg">35 ฿</span>
+                </div>
+                <div class="service-item flex justify-between items-center bg-apple-50/60 hover:bg-apple-100 border border-apple-100 p-3 rounded-xl transition cursor-pointer active:scale-[0.98]" onclick="openModal('ปั๊มฟอล TikTok 500 ฟอล', '110')">
+                    <span class="text-sm font-medium">500 ฟอล</span>
+                    <span class="text-xs font-bold text-apple-700 bg-apple-200/60 px-2.5 py-1 rounded-lg">110 ฿</span>
+                </div>
+                <div class="service-item flex justify-between items-center bg-apple-50/60 hover:bg-apple-100 border border-apple-100 p-3 rounded-xl transition cursor-pointer active:scale-[0.98]" onclick="openModal('ปั๊มฟอล TikTok 1,000 ฟอล', '190')">
+                    <span class="text-sm font-medium">1,000 ฟอล</span>
+                    <span class="text-xs font-bold text-apple-700 bg-apple-200/60 px-2.5 py-1 rounded-lg">190 ฿</span>
+                </div>
+                <div class="service-item flex justify-between items-center bg-apple-50/60 hover:bg-apple-100 border border-apple-100 p-3 rounded-xl transition cursor-pointer active:scale-[0.98]" onclick="openModal('ปั๊มฟอล TikTok 5,000 ฟอล', '800')">
+                    <span class="text-sm font-medium">5,000 ฟอล</span>
+                    <span class="text-xs font-bold text-apple-700 bg-apple-200/60 px-2.5 py-1 rounded-lg">800 ฿</span>
+                </div>
+                <div class="service-item flex justify-between items-center bg-apple-50/60 hover:bg-apple-100 border border-apple-100 p-3 rounded-xl transition cursor-pointer active:scale-[0.98]" onclick="openModal('ปั๊มฟอล TikTok 10,000 ฟอล', '1,400')">
+                    <span class="text-sm font-medium">10,000 ฟอล</span>
+                    <span class="text-xs font-bold text-apple-700 bg-apple-200/60 px-2.5 py-1 rounded-lg">1,400 ฿</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="mt-6 pt-4 border-t border-apple-100 text-center">
+            <a href="https://line.me/ti/p/Ck6Dsy2ecB" target="_blank" 
+               class="w-full bg-[#06C755] hover:bg-[#05b34c] text-white font-medium py-3 px-4 rounded-xl shadow-md flex items-center justify-center gap-2 transition active:scale-[0.98] mb-3">
+                <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+                    <path d="M24 10.304c0-5.369-5.383-9.738-12-9.738-6.616 0-12 4.369-12 9.738 0 4.814 4.269 8.846 10.036 9.608.391.084.922.258 1.057.592.121.303.079.778.039 1.085l-.171 1.027c-.053.303-.242 1.186 1.039.647 1.281-.54 6.911-4.069 9.428-6.967 1.739-1.907 2.572-3.844 2.572-6.002z"/>
+                </svg>
+                ติดต่อ / สอบถามทาง LINE
+            </a>
+            <p class="text-xs text-slate-400">🍏 Ba Bah Shop 🐰 • บริการงานปั๊มฟอล</p>
+        </div>
+    </div>
+
+    <div id="orderModal" class="fixed inset-0 bg-slate-900/40 backdrop-blur-sm hidden justify-center items-center p-4 z-50">
+        <div class="bg-white rounded-3xl p-6 w-full max-w-xs text-center shadow-2xl modal-animate border border-apple-100">
+            <div class="w-12 h-12 bg-apple-100 rounded-full flex items-center justify-center mx-auto mb-3 text-2xl">
+                🍏
+            </div>
+            <h3 id="modalTitle" class="text-base font-semibold text-apple-900 mb-1">รายการบริการ</h3>
+            <p id="modalPrice" class="text-sm font-bold text-apple-600 mb-5">ราคา 0 บาท</p>
+            
+            <a id="modalLineLink" href="https://line.me/ti/p/Ck6Dsy2ecB" target="_blank" 
+               class="w-full bg-[#06C755] hover:bg-[#05b34c] text-white font-medium py-2.5 px-4 rounded-xl shadow-md flex items-center justify-center gap-2 transition mb-2 text-sm">
+                💬 สั่งซื้อผ่าน LINE
+            </a>
+            
+            <button onclick="closeModal()" class="w-full bg-slate-100 hover:bg-slate-200 text-slate-600 font-medium py-2 px-4 rounded-xl transition text-xs">
+                ปิดหน้าต่าง
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const LINE_URL = "https://line.me/ti/p/Ck6Dsy2ecB";
+
+        function openModal(name, price) {
+            document.getElementById('modalTitle').innerText = name;
+            document.getElementById('modalPrice').innerText = `ราคาเพียง ${price} บาท`;
+            document.getElementById('modalLineLink').href = LINE_URL;
+            
+            const modal = document.getElementById('orderModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('orderModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        function filterServices() {
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+            const items = document.querySelectorAll('.service-item');
+            const categories = document.querySelectorAll('.service-category');
+
+            items.forEach(item => {
+                const text = item.innerText.toLowerCase();
+                if (text.includes(query)) {
+                    item.style.display = "flex";
+                } else {
+                    item.style.display = "none";
+                }
+            });
+
+            // Hide empty categories during search
+            categories.forEach(cat => {
+                const visibleItems = cat.querySelectorAll('.service-item[style="display: flex;"]');
+                if (query !== "" && visibleItems.length === 0) {
+                    cat.style.display = "none";
+                } else {
+                    cat.style.display = "block";
+                }
+            });
+        }
+
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('orderModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        };
+    </script>
+</body>
+</html>
